@@ -7,14 +7,20 @@
   <meta name="description" content="Reduce tu factura de luz y gas sin cambiar de compañía. Estudio gratuito, sin compromiso y atención personalizada por WhatsApp.">
   <meta name="keywords" content="ahorro energía, factura luz, reducir gastos, energía barata, estudio gratuito, energía España">
   <meta name="author" content="David Energía">
-
+  
   <!-- Open Graph para compartir en redes -->
   <meta property="og:title" content="David Energía - Ahorra en tu factura de luz y gas" />
   <meta property="og:description" content="Miles de españoles están pagando de más. Descubre si puedes ahorrar tú también, sin cambiar de compañía." />
   <meta property="og:image" content="https://tu-dominio.com/imagen-og.jpg" />
   <meta property="og:url" content="https://tu-dominio.com" />
   <meta property="og:type" content="website" />
-
+  
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="David Energía - Ahorra en tu factura de luz y gas" />
+  <meta name="twitter:description" content="Descubre cómo puedes reducir tu factura de luz y gas, sin cambiar de compañía." />
+  <meta name="twitter:image" content="https://tu-dominio.com/imagen-og.jpg" />
+  
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -32,8 +38,8 @@
   <div class="page-wrapper">
     <header class="hero">
       <div class="container">
-        <h1>¿Te están cobrando de más en tu factura?</h1>
-        <p>
+        <h1 class="hero-title">¿Te están cobrando de más en tu factura?</h1>
+        <p class="hero-description">
           En España, miles pagan hasta un 30% extra sin saberlo.<br>
           <strong>Más de 1.300 personas ya están ahorrando con nosotros.</strong><br>
           Descubre si tú también puedes hacerlo, sin cambiar de compañía.
@@ -138,35 +144,33 @@
       </div>
     </section>
 
-   <!-- Sección de Formulario -->
-<section class="formulario-seccion">
-  <div class="container">
-    <h2>¿Quieres pagar menos en tu factura de luz?</h2>
-    <p class="subtitulo">Solicita tu estudio gratuito en menos de 1 minuto. Sin compromiso.</p>
+    <!-- Sección de Formulario -->
+    <section class="formulario-seccion">
+      <div class="container">
+        <h2>¿Quieres pagar menos en tu factura de luz?</h2>
+        <p class="subtitulo">Solicita tu estudio gratuito en menos de 1 minuto. Sin compromiso.</p>
 
-    <form onsubmit="enviarDatos(event)" class="formulario">
-      <input type="text" name="nombre" placeholder="👤 Nombre y Apellido" required />
-      <input type="text" name="whatsapp" placeholder="📱 WhatsApp" required />
-      <input type="email" name="correo" placeholder="📧 Correo Electrónico" required />
-      
-      <select name="horario" required>
-        <option value="">🕐 Horario preferido</option>
-        <option value="mañana">Mañana</option>
-        <option value="tarde">Tarde</option>
-        <option value="noche">Noche</option>
-      </select>
+        <form onsubmit="enviarDatos(event)" class="formulario">
+          <input type="text" name="nombre" placeholder="👤 Nombre y Apellido" required />
+          <input type="text" name="whatsapp" placeholder="📱 WhatsApp" required />
+          <input type="email" name="correo" placeholder="📧 Correo Electrónico" required />
+          
+          <select name="horario" required>
+            <option value="">🕐 Horario preferido</option>
+            <option value="mañana">Mañana</option>
+            <option value="tarde">Tarde</option>
+            <option value="noche">Noche</option>
+          </select>
 
-      <button type="submit">🔍 Quiero ahorrar desde hoy</button>
-    </form>
+          <button type="submit">🔍 Quiero ahorrar desde hoy</button>
+        </form>
 
-    <p class="confianza">🔒 Tus datos están seguros. Solo los usaremos para ayudarte a ahorrar.</p>
-  </div>
+        <p class="confianza">🔒 Tus datos están seguros. Solo los usaremos para ayudarte a ahorrar.</p>
+      </div>
 
-  <!-- Mensaje de carga (oculto por defecto) -->
-  <div id="loading-message" style="display:none;">Cargando...</div>
-</section>
-
-<script src="script.js"></script>
+      <!-- Mensaje de carga (oculto por defecto) -->
+      <div id="loading-message" style="display:none;">Cargando...</div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -184,10 +188,9 @@
     </footer>
     
     <!-- Botón de WhatsApp flotante -->
-<a href="https://wa.me/34660621834?text=¡Hola!%20Me%20interesa%20ahorrar%20en%20mi%20factura.%20Quiero%20más%20información." target="_blank">
-  <img src="whatsapp-icon.png" alt="WhatsApp" class="whatsapp-button">
-</a>
-
+    <a href="https://wa.me/34660621834?text=¡Hola!%20Me%20interesa%20ahorrar%20en%20mi%20factura.%20Quiero%20más%20información." target="_blank" class="whatsapp-button">
+      <img src="whatsapp.png" alt="WhatsApp">
+    </a>
 
   </div>
 </body>
