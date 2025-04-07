@@ -20,7 +20,7 @@ async function enviarDatos(event) {
     }
 
     // Validar formato de WhatsApp (solo números y prefijo internacional +)
-    const whatsappPattern = /^\+?\d{1,15}$/;
+    const whatsappPattern = /^\+?\d{7,15}$/;
     if (!whatsappPattern.test(whatsapp)) {
         alert("Por favor, ingresa un número de WhatsApp válido.");
         isSubmitting = false;
@@ -53,17 +53,16 @@ async function enviarDatos(event) {
     botonEnviar.innerHTML = "Enviando...";
     botonEnviar.disabled = true;
 
+    // Tiempo de espera máximo
     const timeout = setTimeout(() => {
         alert("El tiempo de espera ha expirado. Por favor, intenta nuevamente.");
         isSubmitting = false;
         botonEnviar.innerHTML = "Enviar";
         botonEnviar.disabled = false;
-    }, 10000);
+        if (loadingMessage) loadingMessage.style.display = "none";
+    }, 10000); // 10 segundos
 
     let data = null;
-
-    const sheet = SpreadsheetApp.openById("...").getSheetByName("Formulario");
-
 
     try {
         const response = await fetch('https://script.google.com/macros/s/AKfycbwqV2jddt5garxu-_nroVGxCqF9eeJzMQyxVudrziTSRfzraHlNl-Pv3Hm9_srvhsQ/exec', {
@@ -87,6 +86,8 @@ async function enviarDatos(event) {
             setTimeout(() => {
                 window.open(urlWA, "_blank");
             }, 500);
+
+            form.reset();
         } else {
             alert("Hubo un problema con el envío, por favor intente nuevamente.");
         }
@@ -98,9 +99,5 @@ async function enviarDatos(event) {
         botonEnviar.innerHTML = "Enviar";
         botonEnviar.disabled = false;
         isSubmitting = false;
-
-        if (data && data.success) {
-            form.reset();
-        }
     }
 }

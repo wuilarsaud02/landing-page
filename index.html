@@ -154,17 +154,22 @@
           <input type="text" name="nombre" placeholder="👤 Nombre y Apellido" required />
           <input type="text" name="whatsapp" placeholder="📱 WhatsApp" required />
           <input type="email" name="correo" placeholder="📧 Correo Electrónico" required />
-          
+        
           <select name="horario" id="horario" required> 
             <option value="">🕐 Horario preferido</option>
             <option value="mañana">Mañana</option>
             <option value="tarde">Tarde</option>
             <option value="noche">Noche</option>
           </select>
-          
-
+        
           <button type="submit">🔍 Quiero ahorrar desde hoy</button>
         </form>
+        
+        <!-- Mensaje de carga -->
+        <div id="loading-message" style="display:none; text-align: center; margin-top: 10px;">
+          Enviando tu información... ⏳
+        </div>
+        
 
         <p class="confianza">🔒 Tus datos están seguros. Solo los usaremos para ayudarte a ahorrar.</p>
       </div>
