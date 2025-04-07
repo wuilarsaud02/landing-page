@@ -35,9 +35,9 @@ async function enviarDatos(event) {
         return;
     }
 
-    // Validar horario (ahora aceptamos las opciones de texto: mañana, tarde, noche)
+    // Validar horario (solo aceptar "mañana", "tarde", o "noche")
     const horariosPermitidos = ['mañana', 'tarde', 'noche'];
-    if (horario && !horariosPermitidos.includes(horario.toLowerCase())) {
+    if (!horariosPermitidos.includes(horario.toLowerCase())) {
         alert("Por favor, ingresa un horario válido (mañana, tarde, noche).");
         isSubmitting = false;
         return;
