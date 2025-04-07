@@ -35,10 +35,10 @@ async function enviarDatos(event) {
         return;
     }
 
-    // Validar horario (si es necesario, por ejemplo, horario en formato HH:MM)
-    const horarioPattern = /^[0-9]{2}:[0-9]{2}$/;
-    if (horario && !horarioPattern.test(horario)) {
-        alert("Por favor, ingresa un horario válido en formato HH:MM.");
+    // Validar horario (solo aceptar "mañana", "tarde", o "noche")
+    const horariosPermitidos = ['mañana', 'tarde', 'noche'];
+    if (!horariosPermitidos.includes(horario.toLowerCase())) {
+        alert("Por favor, ingresa un horario válido (mañana, tarde, noche).");
         isSubmitting = false;
         return;
     }
