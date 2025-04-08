@@ -145,32 +145,30 @@
     </section>
 
     <!-- Sección de Formulario -->
-    <section class="formulario-seccion">
-      <div class="container">
-        <h2>¿Quieres pagar menos en tu factura de luz?</h2>
-        <p class="subtitulo">Solicita tu estudio gratuito en menos de 1 minuto. Sin compromiso.</p>
+<section class="formulario-seccion">
+  <div class="container">
+    <h2>¿Quieres pagar menos en tu factura de luz?</h2>
+    <p class="subtitulo">Solicita tu estudio gratuito en menos de 1 minuto. Sin compromiso.</p>
 
-        <form onsubmit="enviarDatos(event)" class="formulario">
-          <input type="text" name="nombre" placeholder="👤 Nombre y Apellido" required />
-          <input type="text" name="whatsapp" placeholder="📱 WhatsApp" required />
-          <input type="email" name="correo" placeholder="📧 Correo Electrónico" required />
-          
-          <select name="horario" required>
-            <option value="">🕐 Horario preferido</option>
-            <option value="mañana">Mañana</option>
-            <option value="tarde">Tarde</option>
-            <option value="noche">Noche</option>
-          </select>
+    <form action="https://formspree.io/f/xzzekokw" method="POST" class="formulario">
+      <input type="text" name="nombre" placeholder="👤 Nombre y Apellido" required />
+      <input type="text" name="whatsapp" placeholder="📱 WhatsApp" required />
+      <input type="email" name="correo" placeholder="📧 Correo Electrónico" required />
+      
+      <select name="horario" required> 
+        <option value="">🕐 Horario preferido</option>
+        <option value="mañana">Mañana</option>
+        <option value="tarde">Tarde</option>
+        <option value="noche">Noche</option>
+      </select>
+    
+      <button type="submit">🔍 Quiero ahorrar desde hoy</button>
+    </form>
 
-          <button type="submit">🔍 Quiero ahorrar desde hoy</button>
-        </form>
+    <p class="confianza">🔒 Tus datos están seguros. Solo los usaremos para ayudarte a ahorrar.</p>
+  </div>
+</section>
 
-        <p class="confianza">🔒 Tus datos están seguros. Solo los usaremos para ayudarte a ahorrar.</p>
-      </div>
-
-      <!-- Mensaje de carga (oculto por defecto) -->
-      <div id="loading-message" style="display:none;">Cargando...</div>
-    </section>
 
     <!-- Footer -->
     <footer class="footer">
