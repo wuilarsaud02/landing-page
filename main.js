@@ -10,24 +10,22 @@ async function enviarDatos(event) {
     const nombre = form.nombre.value.trim();
     const whatsapp = form.whatsapp.value.trim();
     const correo = form.correo.value.trim();
-    const horario = form.horario.value;  // Select no necesita trim
+    const horario = form.horario.value;
 
-    // Validar que los campos no estén vacíos
+    // Validaciones
     if (!nombre || !whatsapp || !correo || !horario) {
         alert("Por favor, completa todos los campos antes de enviar el formulario.");
         isSubmitting = false;
         return;
     }
 
-    // Validar formato de WhatsApp (solo números y prefijo internacional +)
-    const whatsappPattern = /^\+?\d{7,15}$/;
+    const whatsappPattern = /^\+?\d{1,15}$/;
     if (!whatsappPattern.test(whatsapp)) {
         alert("Por favor, ingresa un número de WhatsApp válido.");
         isSubmitting = false;
         return;
     }
 
-    // Validar formato de correo electrónico
     const emailPattern = /^[^@]+@[^@]+\.[^@]+$/;
     if (!emailPattern.test(correo)) {
         alert("Por favor, ingresa un correo electrónico válido.");
@@ -35,7 +33,6 @@ async function enviarDatos(event) {
         return;
     }
 
-    // Validar horario (mañana, tarde, noche)
     const horariosPermitidos = ['mañana', 'tarde', 'noche'];
     if (!horariosPermitidos.includes(horario.toLowerCase())) {
         alert("Por favor, selecciona un horario válido (mañana, tarde o noche).");
@@ -53,28 +50,24 @@ async function enviarDatos(event) {
     botonEnviar.innerHTML = "Enviando...";
     botonEnviar.disabled = true;
 
-    // Tiempo de espera máximo
     const timeout = setTimeout(() => {
         alert("El tiempo de espera ha expirado. Por favor, intenta nuevamente.");
         isSubmitting = false;
         botonEnviar.innerHTML = "Enviar";
         botonEnviar.disabled = false;
-        if (loadingMessage) loadingMessage.style.display = "none";
-    }, 10000); // 10 segundos
+    }, 10000);
 
     let data = null;
 
     try {
-        const response = await fetch('https://script.google.com/macros/s/AKfycbwqV2jddt5garxu-_nroVGxCqF9eeJzMQyxVudrziTSRfzraHlNl-Pv3Hm9_srvhsQ/exec', {
+        const response = await fetch('https://script.google.com/macros/s/AKfycbzOoKBWQ7PotomqBgYwxrA9hG-CUqIBARdi1DL-iWZow0E2tzF9du8VLFV5ITOQNmQ/exec', {
             method: 'POST',
             body: new FormData(form),
         });
 
         clearTimeout(timeout);
 
-        if (!response.ok) {
-            throw new Error('No se pudo procesar la solicitud. Intenta nuevamente.');
-        }
+        if (!response.ok) throw new Error('No se pudo procesar la solicitud.');
 
         data = await response.json();
 
@@ -86,18 +79,20 @@ async function enviarDatos(event) {
             setTimeout(() => {
                 window.open(urlWA, "_blank");
             }, 500);
-
-            form.reset();
         } else {
             alert("Hubo un problema con el envío, por favor intente nuevamente.");
         }
     } catch (error) {
         console.error('Error al enviar los datos:', error);
-        alert("Hubo un error al enviar los datos. Por favor, asegúrate de tener conexión a internet y vuelve a intentarlo.");
+        alert("Hubo un error al enviar los datos. Verifica tu conexión e intenta de nuevo.");
     } finally {
         if (loadingMessage) loadingMessage.style.display = "none";
         botonEnviar.innerHTML = "Enviar";
         botonEnviar.disabled = false;
         isSubmitting = false;
+
+        if (data && data.success) {
+            form.reset();
+        }
     }
 }
